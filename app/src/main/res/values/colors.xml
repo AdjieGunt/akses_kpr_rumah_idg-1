@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<color name="colorPrimary">#fff</color>-->
+    <!--<color name="colorPrimaryDark">#e0e0e0</color>-->
+    <!--<color name="colorAccent">#FF4081</color>-->
+    <!--<color name="black">#000</color>-->
+    <!--<color name="white">#fff</color>-->
+    <!--<color name="gray">#e0e0e0</color>-->
+    <!--<color name="blue_accent">#afeeee</color>-->
+    <!--<color name="yellowhite">#ffea91</color>-->
+
+    <color name="colorPrimary">#fff</color>
+    <color name="colorAccent">#76d275</color>
+    <color name="colorPrimaryDark">#00701a</color>
+    <color name="secondaryColor">#fbc02d</color>
+    <color name="secondaryLightColor">#fff263</color>
+    <color name="secondaryDarkColor">#c49000</color>
+    <color name="primaryTextColor">#dcedc8</color>
+    <color name="secondaryTextColor">#fffde7</color>
+    <color name="black">#000</color>
+    <color name="white">#fff</color>
+    <color name="gray">#DBDBDB</color>
+    <color name="darkGray">#484848</color>
+    <color name="accentGray">#dfe2e7</color>
+    <color name="blue_accent">#afeeee</color>
+    <color name="yellowhite">#ffea91</color>
+
+    <!-- Screens background color-->
+    <color name="bg_slider_screen1">#f4b241</color>
+    <color name="bg_slider_screen2">#16bc7d</color>
+    <color name="bg_slider_screen3">#203d8c</color>
+    <!-- dots inactive colors -->
+    <color name="dot_inactive_screen1">#ffa000</color>
+    <color name="dot_inactive_screen2">#008c57</color>
+    <color name="dot_inactive_screen3">#0e1e49</color>
+    <!-- dots active colors -->
+    <color name="dot_active_screen1">#f9c772</color>
+    <color name="dot_active_screen2">#74f7c5</color>
+    <color name="dot_active_screen3">#3a67e0</color>
+    <color name="red">#fb0421</color>
+    <array name="array_dot_active">
+        <item>@color/black</item>
+        <!--<item>@color/dot_active_screen2</item>-->
+        <!--<item>@color/dot_active_screen3</item>-->
+    </array>
+    <array name="array_dot_inactive">
+        <!--<item>@color/white</item>-->
+        <item>@color/yellowhite</item>
+        <!--<item>@color/dot_inactive_screen3</item>-->
+    </array>
+    <color name="transparent_color">#00000000</color>
+</resources>
