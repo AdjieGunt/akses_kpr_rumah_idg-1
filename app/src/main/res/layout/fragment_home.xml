@@ -39,8 +39,8 @@
                 android:layout_marginTop="@dimen/paddingSmall"
                 app:tabBackground="@xml/layout_bg"
                 app:tabMode="scrollable"
-                app:tabPaddingEnd="5dp"
-                app:tabPaddingStart="5dp"
+                app:tabPaddingEnd="3dp"
+                app:tabPaddingStart="3dp"
                 app:tabSelectedTextColor="@color/black"
                 app:tabTextColor="@color/gray"
                 app:tabIndicatorColor="@null" />

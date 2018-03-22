@@ -15,7 +15,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_marginBottom="15dp">
 
             <RelativeLayout
                 android:id="@+id/layoutProduct"
@@ -36,11 +37,13 @@
 
                 <TextView
                     android:id="@+id/nama"
+                    android:text="Kencana uyuy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/imageHome"
                     android:textStyle="bold"
-                    android:textSize="12sp"
+                    android:textSize="15sp"
+                    android:layout_marginTop="5dp"
                     android:textColor="@color/darkGray"
                     android:layout_marginLeft="@dimen/marginSmallest"/>
 
@@ -48,7 +51,7 @@
                     android:id="@+id/location"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="10sp"
+                    android:textSize="12sp"
                     android:layout_below="@+id/nama"
                     android:textColor="@color/darkGray"
                     android:layout_marginLeft="@dimen/marginSmallest"/>
@@ -58,7 +61,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/location"
-                    android:textSize="10sp"
+                    android:textSize="11sp"
                     android:textColor="@color/darkGray"
                     android:layout_marginLeft="@dimen/marginSmallest"/>
             </RelativeLayout>
