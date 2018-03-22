@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.rumahkpr.akses.aksesrumahkpr.activity.SimulasiKPRActivity"
-    android:background="@color/white">
+    android:background="@color/white"
+    tools:context="com.rumahkpr.akses.aksesrumahkpr.activity.SimulasiKPRActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBarSimulasi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true">
+
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbarSimulasi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:navigationIcon="@drawable/ic_close"
             app:title="SIMULASI KPR"
-            app:titleTextColor="@color/darkGray">
-        </android.support.v7.widget.Toolbar>
+            app:titleTextColor="@color/darkGray"></android.support.v7.widget.Toolbar>
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tabSimulasi"
@@ -28,33 +27,36 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/hitung"
             android:layout_alignParentTop="true"
-            app:tabMode="fixed"
             app:tabBackground="@xml/layout_bg"
+            app:tabIndicatorColor="@color/colorPrimary"
+            app:tabMode="fixed"
             app:tabSelectedTextColor="@color/black"
-            app:tabTextColor="@color/gray"
-            app:tabIndicatorColor="@color/colorPrimary"/>
+            app:tabTextColor="@color/gray" />
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.view.ViewPager
-        android:layout_below="@+id/appBarSimulasi"
         android:id="@+id/viewPagerSimulasi"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/hitung"
+        android:layout_below="@+id/appBarSimulasi" />
+
+
+    <RelativeLayout
         android:id="@+id/hitung"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_alignParentBottom="true"
-        android:background="@xml/custem_bottom_green"
-        android:padding="@dimen/paddingSmall">
+        android:layout_weight="1"
+        android:background="@xml/custem_bottom_green">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
+            android:layout_centerInParent="true"
             android:text="@string/hitung"
             android:textColor="@color/white"
             android:textStyle="bold" />
-    </LinearLayout>
+    </RelativeLayout>
 
 </RelativeLayout>

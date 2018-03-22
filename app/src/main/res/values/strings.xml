@@ -116,4 +116,20 @@
     <string name="kembali">KEMBALI</string>
     <string name="see_more">Lihat Semua +300</string>
     <string name="hitung">HITUNG</string>
+    <string name="_120_bulan">120 Bulan</string>
+    <string name="lama_pinjaman">Lama Pinjaman</string>
+    <string name="suku_bunga">Suku Bunga Pertahun</string>
+    <string name="uang_muka">Uang Muka</string>
+    <string name="harga_beli">Harga Beli Properti</string>
+    <string name="nama">Nama</string>
+    <string name="nik">NIK</string>
+    <string name="namaLengkap">Nama Lengkap</string>
+    <string name="tglLahir">Tanggal Lahir</string>
+    <string name="tenor">Tenor</string>
+    <string name="platon">Platond Kredit</string>
+    <string name="nocif">Nomor Cif</string>
+    <string name="notelp">No. HP</string>
+    <string name="email">Email</string>
+    <string name="pendapatan">Pendapatan perbulan</string>
+    <string name="namaIbu">Nama Ibu Kandung</string>
 </resources>

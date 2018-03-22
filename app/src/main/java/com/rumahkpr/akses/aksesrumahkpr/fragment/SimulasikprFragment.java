@@ -17,15 +17,19 @@ import android.widget.EditText;
 import com.rumahkpr.akses.aksesrumahkpr.Listener.SimulasiKPR;
 import com.rumahkpr.akses.aksesrumahkpr.R;
 import com.rumahkpr.akses.aksesrumahkpr.model.Rumah;
+import com.rumahkpr.akses.aksesrumahkpr.util.formatNominal;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SimulasikprFragment extends Fragment implements SimulasiKPR {
-    private EditText uangMuka, lamaPinjam, bunga;
+public class SimulasikprFragment extends Fragment{
+    private EditText uangMuka, lamaPinjam, bunga, nama, harga;
     private Button hitung;
     private SimulasiKPR simulasiKPR;
-    private String mnilaiPinjaman, mbunga, mlamapinjam, muangMuka, hargaHouse;
+    private String mnilaiPinjaman="0", mbunga="0", mlamapinjam="0", muangMuka="0", hargaHouse;
+    private Bundle bundle;
+    private Rumah rumah;
+    private formatNominal formatNominal;
 
     public SimulasikprFragment() {
         // Required empty public constructor
@@ -37,9 +41,9 @@ public class SimulasikprFragment extends Fragment implements SimulasiKPR {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_simulaikpr, container, false);
         // Inflate the layout for this fragment
-        uangMuka = (EditText) view.findViewById(R.id.uangMuka);
-        lamaPinjam = (EditText) view.findViewById(R.id.lamaPinjaman);
-        bunga = (EditText) view.findViewById(R.id.sukuBungaPtahun);
+        initXml(view);
+        formatNominal = new formatNominal();
+        getDataBundle();
 
         uangMuka.addTextChangedListener(new TextWatcher() {
             @Override
@@ -50,7 +54,7 @@ public class SimulasikprFragment extends Fragment implements SimulasiKPR {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 muangMuka = uangMuka.getText().toString();
-                mnilaiPinjaman = String.valueOf((1000000000 - Integer.valueOf(muangMuka)));
+                mnilaiPinjaman = String.valueOf((Integer.valueOf(rumah.getHarga()) - Integer.valueOf(muangMuka)));
                 simulasiKPR.hitungSimulasi(mnilaiPinjaman, mlamapinjam, mbunga);
             }
 
@@ -96,6 +100,22 @@ public class SimulasikprFragment extends Fragment implements SimulasiKPR {
         return view;
     }
 
+    private void getDataBundle() {
+        bundle = getArguments();
+        rumah = (Rumah)bundle.getSerializable("rumah");
+
+        nama.setText(rumah.getKlaster().toUpperCase());
+        harga.setText("Rp. "+formatNominal.nominal(Integer.valueOf(rumah.getHarga())));
+    }
+
+    private void initXml(View view) {
+        uangMuka = (EditText) view.findViewById(R.id.uangMuka);
+        lamaPinjam = (EditText) view.findViewById(R.id.lamaPinjaman);
+        bunga = (EditText) view.findViewById(R.id.sukuBungaPtahun);
+        nama = (EditText) view.findViewById(R.id.namaSimulasi);
+        harga = (EditText) view.findViewById(R.id.hargaSimulai);
+    }
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -112,10 +132,5 @@ public class SimulasikprFragment extends Fragment implements SimulasiKPR {
 
     public void setDataHouse(Rumah rumah){
         Log.d(rumah.getAlamat(), "<<====");
-    }
-
-    @Override
-    public void hitungSimulasi(String nilaiPinjaman, String lamaPinjaman, String sukuBunga) {
-
     }
 }

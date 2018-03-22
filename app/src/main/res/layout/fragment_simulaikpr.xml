@@ -12,7 +12,7 @@
         android:weightSum="2"
         android:padding="@dimen/paddingSmallest">
         <TextView
-            android:text="Nama"
+            android:text="@string/nama"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -41,7 +41,7 @@
         android:weightSum="2"
         android:padding="@dimen/paddingSmallest">
         <TextView
-            android:text="Harga Beli Properti"
+            android:text="@string/harga_beli"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -70,7 +70,7 @@
         android:weightSum="2"
         android:padding="@dimen/paddingSmallest">
         <TextView
-            android:text="Uang Muka"
+            android:text="@string/uang_muka"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -100,7 +100,7 @@
         android:weightSum="2"
         android:padding="@dimen/paddingSmallest">
         <TextView
-            android:text="Suku Bunga Pertahun"
+            android:text="@string/suku_bunga"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -130,14 +130,14 @@
         android:weightSum="2"
         android:padding="@dimen/paddingSmallest">
         <TextView
-            android:text="Lama Pinjaman"
+            android:text="@string/lama_pinjaman"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textColor="@color/darkGray"/>
         <EditText
             android:id="@+id/lamaPinjaman"
-            android:hint="20 Tahun"
+            android:hint="@string/_120_bulan"
             android:textStyle="bold"
             android:layout_weight="1"
             android:gravity="right"

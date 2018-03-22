@@ -38,8 +38,7 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         initXml(view);
@@ -65,7 +64,7 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
     }
 
     private void initViewPager() {
-        adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager(), 0);
+        adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager(), 0, new Bundle());
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
         positionTab = tabLayout.getSelectedTabPosition();

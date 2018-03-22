@@ -2,8 +2,8 @@ package com.rumahkpr.akses.aksesrumahkpr.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.design.widget.BottomSheetDialog;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -12,14 +12,18 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
+import com.rumahkpr.akses.aksesrumahkpr.Data.Online.API;
 import com.rumahkpr.akses.aksesrumahkpr.Listener.SimulasiKPR;
 import com.rumahkpr.akses.aksesrumahkpr.R;
 import com.rumahkpr.akses.aksesrumahkpr.adapter.ViewPagerAdapter;
-import com.rumahkpr.akses.aksesrumahkpr.fragment.SimulasikprFragment;
 import com.rumahkpr.akses.aksesrumahkpr.model.Rumah;
 import com.rumahkpr.akses.aksesrumahkpr.util.DialogManager;
+import com.rumahkpr.akses.aksesrumahkpr.util.formatNominal;
 
 public class SimulasiKPRActivity extends AppCompatActivity implements SimulasiKPR {
 
@@ -30,11 +34,18 @@ public class SimulasiKPRActivity extends AppCompatActivity implements SimulasiKP
     private ViewPagerAdapter adapter;
     private ViewPager viewPager;
     private TabLayout tabLayout;
+    private Bundle bundle;
+    private RelativeLayout hitung;
+    private API api;
+    private formatNominal formatNominal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simulasi_kpr);
+
+        api = new API();
+        formatNominal = new formatNominal();
 
         toolbar = (Toolbar)findViewById(R.id.toolbarSimulasi);
         setSupportActionBar(toolbar);
@@ -43,12 +54,12 @@ public class SimulasiKPRActivity extends AppCompatActivity implements SimulasiKP
 
         tabLayout = (TabLayout)findViewById(R.id.tabSimulasi);
         viewPager = (ViewPager)findViewById(R.id.viewPagerSimulasi);
-        LinearLayout hitung = (LinearLayout)findViewById(R.id.hitung);
+        hitung = (RelativeLayout)findViewById(R.id.hitung);
+        getDataIntent();
 
-        adapter = new ViewPagerAdapter(getSupportFragmentManager(), 1);
+        adapter = new ViewPagerAdapter(getSupportFragmentManager(), 1, bundle);
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
-        getDataIntent();
 
 
         hitung.setOnClickListener(new View.OnClickListener() {
@@ -78,10 +89,7 @@ public class SimulasiKPRActivity extends AppCompatActivity implements SimulasiKP
                     });
                 }else{
                     Log.d("Hitung222", mnilaiPinjaman+", "+mlama+", "+mbunga);
-
-                    Fragment fragment = adapter.getRegistrationFragment(0);
-                    Log.d("fragment", fragment.getTag());
-                    ((SimulasikprFragment)fragment).setDataHouse(rumah);
+                    api.simulasiKPR(SimulasiKPRActivity.this, String.valueOf(mnilaiPinjaman), String.valueOf(mbunga), mlama);
                 }
             }
         });
@@ -91,10 +99,8 @@ public class SimulasiKPRActivity extends AppCompatActivity implements SimulasiKP
     private void getDataIntent() {
         intent = getIntent();
         rumah = (Rumah)intent.getSerializableExtra("rumah");
-
-
-//        Fragment fragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.viewPagerSimulasi + ":" + viewPager.getCurrentItem());
-//        Log.d("Tag", fragment.getTag());
+        bundle = new Bundle();
+        bundle.putSerializable("rumah", rumah);
 
     }
 
@@ -123,5 +129,25 @@ public class SimulasiKPRActivity extends AppCompatActivity implements SimulasiKP
 
         // User didn't trigger a refresh, let the superclass handle this action
         return super.onOptionsItemSelected(item);
+    }
+
+    public void hasilSimulasi(String hasil){
+        View view = getLayoutInflater().inflate(R.layout.activity_hasil_simulasi, null);
+        final BottomSheetDialog dialog = new BottomSheetDialog(this);
+        dialog.setContentView(view);
+        dialog.setCancelable(false);
+        TextView hasilTxt = (TextView)dialog.findViewById(R.id.nilasiHasil);
+        ImageView close = (ImageView)dialog.findViewById(R.id.close_hasilSimulasi);
+        double mhasil = Double.valueOf(hasil);
+        int nhasil = Integer.valueOf((int) mhasil);
+        hasilTxt.setText("Rp. "+formatNominal.nominal(nhasil));
+
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
 }

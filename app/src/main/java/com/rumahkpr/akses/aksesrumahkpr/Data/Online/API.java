@@ -8,12 +8,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.rumahkpr.akses.aksesrumahkpr.activity.DetailProductActivity;
 import com.rumahkpr.akses.aksesrumahkpr.activity.SearchActivity;
+import com.rumahkpr.akses.aksesrumahkpr.activity.SimulasiKPRActivity;
 import com.rumahkpr.akses.aksesrumahkpr.fragment.ListFragment;
 import com.rumahkpr.akses.aksesrumahkpr.fragment.MapFragment;
 import com.rumahkpr.akses.aksesrumahkpr.model.Rumah;
@@ -25,6 +27,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * Created by JEMMY CALAK on 3/18/2018.
@@ -32,7 +35,7 @@ import java.util.ArrayList;
 
 public class API {
 
-    public final String IP_ADDRESS = "https://btn-rest-api.firebaseio.com/house-list.json";
+    public final String IP_ADDRESS = "https://btn-rest-api.firebaseio.com/";
     ProgressBar progressBar;
 
     public void getListHouse(final Activity activity, final String parameter, final Fragment fragment){
@@ -44,7 +47,7 @@ public class API {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, IP_ADDRESS, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, IP_ADDRESS+"house-list.json", null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.d("response", String.valueOf(response));
@@ -169,7 +172,71 @@ public class API {
                     }
                 });
             }
-        });
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                return super.getHeaders();
+            }
+        };
+        Singletone.getmSingletone(activity).addToRequestqueue(jsonObjectRequest);
+    }
+
+    public void simulasiKPR(final Activity activity, final String nilai_pinjam, final String bunga, final int bulan){
+        Log.d("parameter", nilai_pinjam+" , "+bunga+" , "+bulan);
+        startLoading(activity);
+        final JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("nilai_pinjam", nilai_pinjam);
+            jsonObject.put("interest", bunga);
+            jsonObject.put("jangka_waktu", bulan);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, IP_ADDRESS+"credit-simulation.json", null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.d("response", String.valueOf(response));
+                try {
+                    JSONObject jsonObject1 = new JSONObject(String.valueOf(response)) ;
+                    String status = jsonObject1.getString("status");
+                    if(status.equals("success")){
+                        JSONObject json = jsonObject1.getJSONObject("payload");
+                        ((SimulasiKPRActivity)activity).hasilSimulasi(json.getString("angsuran_perbulan"));
+//                        ((SimulasiKPRActivity)activity).hasilSimulasiFragment(json.getString("angsuran_perbulan"));
+
+                    }else{
+                        Log.d("Error", "status faild");
+                        new DialogManager().AlertOK(activity, "Coba lagi pengunjung sedang penuh.", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                            }
+                        });
+                    }
+                    stopLoading(activity);
+                } catch (JSONException e) {
+                    stopLoading(activity);
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                stopLoading(activity);
+                Log.d("Error", error.getMessage().toString());
+                new DialogManager().AlertOK(activity, "Gagal mengambil data", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                return super.getHeaders();
+            }
+        };
         Singletone.getmSingletone(activity).addToRequestqueue(jsonObjectRequest);
     }
 

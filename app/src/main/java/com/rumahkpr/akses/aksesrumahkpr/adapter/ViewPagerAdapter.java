@@ -1,5 +1,6 @@
 package com.rumahkpr.akses.aksesrumahkpr.adapter;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import com.rumahkpr.akses.aksesrumahkpr.fragment.ListFragment;
 import com.rumahkpr.akses.aksesrumahkpr.fragment.MapFragment;
 import com.rumahkpr.akses.aksesrumahkpr.fragment.SimulasikprFragment;
+import com.rumahkpr.akses.aksesrumahkpr.model.Rumah;
 
 /**
  * Created by JEMMY CALAK on 2/24/2018.
@@ -19,10 +21,13 @@ public class ViewPagerAdapter extends FragmentPagerAdapter{
 
     private SparseArray<Fragment> fragmentSparseArray = new SparseArray<>();
     private int codeLayout;
+    private Bundle bundleRumah;
 
-    public ViewPagerAdapter(FragmentManager fm, int codeLayouts) {
+
+    public ViewPagerAdapter(FragmentManager fm, int codeLayouts, Bundle bundle) {
         super(fm);
         this.codeLayout = codeLayouts;
+        this.bundleRumah = bundle;
     }
 
     @Override
@@ -42,10 +47,13 @@ public class ViewPagerAdapter extends FragmentPagerAdapter{
             case 1:
                 switch (position){
                     case 0:
+
                         fragment = new SimulasikprFragment();
+                        fragment.setArguments(bundleRumah);
                         break;
                     case 1:
                         fragment = new SimulasikprFragment();
+                        fragment.setArguments(bundleRumah);
                         break;
                 }
                 break;
@@ -66,7 +74,6 @@ public class ViewPagerAdapter extends FragmentPagerAdapter{
                 switch (position){
                     case 0:
                         title ="LIST";
-                        Log.d("size", String.valueOf(fragmentSparseArray.size()));
                         break;
                     case 1:
                         title ="MAP";
@@ -77,7 +84,6 @@ public class ViewPagerAdapter extends FragmentPagerAdapter{
                 switch (position){
                     case 0:
                         title ="Konvensional";
-                        Log.d("size", String.valueOf(fragmentSparseArray.size()));
                         break;
                     case 1:
                         title ="Syariah";
@@ -103,7 +109,6 @@ public class ViewPagerAdapter extends FragmentPagerAdapter{
     }
 
     public Fragment getRegistrationFragment(int position){
-        Log.d("size", String.valueOf(fragmentSparseArray.size()));
         return fragmentSparseArray.get(position);
     }
 }

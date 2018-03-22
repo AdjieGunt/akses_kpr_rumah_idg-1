@@ -97,7 +97,7 @@ public class DetailProductActivity extends AppCompatActivity implements View.OnC
         }
         nama.setText(rumah.getKlaster());
         alamat.setText(rumah.getAlamat());
-        harga.setText("Rp." + new formatNominal().nominal(Integer.valueOf(rumah.getHarga())));
+        harga.setText("Rp. " + new formatNominal().nominal(Integer.valueOf(rumah.getHarga())));
         fasilitas.setText(kamar_mandi + kamar_tidur + garasi);
         sertifikat.setText(rumah.getSertifikat());
         klaster.setText(rumah.getKlaster());
@@ -248,18 +248,25 @@ public class DetailProductActivity extends AppCompatActivity implements View.OnC
 
     @Override
     public void onClick(View view) {
+        Intent intent;
         switch (view.getId()) {
             case R.id.simulasicicilan:
                 bundle = new Bundle();
                 bundle.putSerializable("rumah", rumah);
-                Intent intent = new Intent(this, SimulasiKPRActivity.class);
+                intent = new Intent(this, SimulasiKPRActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
 
                 overridePendingTransition(R.anim.activity_slide_in_up, R.anim.activity_slide_out_down);
                 break;
             case R.id.ajukankpr:
-                Toast.makeText(this, "Development", Toast.LENGTH_SHORT).show();
+                bundle = new Bundle();
+                bundle.putSerializable("rumah", rumah);
+                intent = new Intent(this, AjukanKPRActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+
+                overridePendingTransition(R.anim.activity_slide_in_up, R.anim.activity_slide_out_down);
                 break;
         }
     }

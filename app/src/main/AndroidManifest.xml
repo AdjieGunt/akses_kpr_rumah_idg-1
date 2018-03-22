@@ -50,8 +50,10 @@
             android:name=".activity.SearchActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Calak.Theme" />
-        <activity android:name=".activity.SimulasiKPRActivity"
-            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.SimulasiKPRActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.AjukanKPRActivity"></activity>
     </application>
 
 </manifest>

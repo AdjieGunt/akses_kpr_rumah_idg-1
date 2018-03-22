@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context="com.rumahkpr.akses.aksesrumahkpr.activity.AjukanKPRActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarPengajuan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarPengajuan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:navigationIcon="@drawable/ic_close"
+            app:title="PENGAJUAN KPR"
+            app:titleTextColor="@color/darkGray" />
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_below="@+id/appBarPengajuan"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/layourPengajuan"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/marginMedium"
+            android:layout_above="@+id/bt_ajukan">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/paddingSmallest"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/nik"
+                        android:textColor="@color/darkGray" />
+
+                    <EditText
+                        android:id="@+id/nik"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@xml/layout_bg"
+                        android:gravity="right"
+                        android:hint="46961354483446"
+                        android:inputType="number"
+                        android:padding="@dimen/paddingSmaller"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textColorHint="@color/gray"
+                        android:textSize="@dimen/textSmall"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/paddingSmallest"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/namaLengkap"
+                        android:textColor="@color/darkGray" />
+
+                    <EditText
+                        android:id="@+id/namaLengkap"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@xml/layout_bg"
+                        android:gravity="right"
+                        android:hint="Dendi Sunardi"
+                        android:padding="@dimen/paddingSmaller"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textColorHint="@color/gray"
+                        android:textSize="@dimen/textSmall"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/paddingSmallest"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/tglLahir"
+                        android:textColor="@color/darkGray" />
+
+                    <EditText
+                        android:id="@+id/uangMuka"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@xml/layout_bg"
+                        android:gravity="right"
+                        android:hint="08-05-1990"
+                        android:inputType="date"
+                        android:padding="@dimen/paddingSmaller"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textColorHint="@color/gray"
+                        android:textSize="@dimen/textSmall"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/paddingSmallest"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/namaIbu"
+                        android:textColor="@color/darkGray" />
+
+                    <EditText
+                        android:id="@+id/namaIbu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@xml/layout_bg"
+                        android:gravity="right"
+                        android:hint="Moms"
+                        android:inputType="text"
+                        android:padding="@dimen/paddingSmaller"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textColorHint="@color/gray"
+                        android:textSize="@dimen/textSmall"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/paddingSmallest"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/pendapatan"
+                        android:textColor="@color/darkGray" />
+
+                    <EditText
+                        android:id="@+id/pendapatan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@xml/layout_bg"
+                        android:gravity="right"
+                        android:hint="Rp. 1,000,000,-"
+                        android:inputType="number"
+                        android:padding="@dimen/paddingSmaller"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textColorHint="@color/gray"
+                        android:textSize="@dimen/textSmall"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/paddingSmallest"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/email"
+                        android:textColor="@color/darkGray" />
+
+                    <EditText
+                        android:id="@+id/email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@xml/layout_bg"
+                        android:gravity="right"
+                        android:hint="dendi.sunardi@dendi.com"
+                        android:inputType="textEmailAddress"
+                        android:padding="@dimen/paddingSmaller"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textColorHint="@color/gray"
+                        android:textSize="@dimen/textSmall"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/paddingSmallest"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/notelp"
+                        android:textColor="@color/darkGray" />
+
+                    <EditText
+                        android:id="@+id/notelpAjukan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@xml/layout_bg"
+                        android:gravity="right"
+                        android:hint="081208089999"
+                        android:inputType="number"
+                        android:maxLength="12"
+                        android:padding="@dimen/paddingSmaller"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textColorHint="@color/gray"
+                        android:textSize="@dimen/textSmall"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/paddingSmallest"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/nocif"
+                        android:textColor="@color/darkGray" />
+
+                    <EditText
+                        android:id="@+id/no_cif"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@xml/layout_bg"
+                        android:gravity="right"
+                        android:hint="111665ee"
+                        android:inputType="text"
+                        android:padding="@dimen/paddingSmaller"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textColorHint="@color/gray"
+                        android:textSize="@dimen/textSmall"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/paddingSmallest"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/platon"
+                        android:textColor="@color/darkGray" />
+
+                    <EditText
+                        android:id="@+id/platonKredit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@xml/layout_bg"
+                        android:gravity="right"
+                        android:hint="Rp. 500,000,000,-"
+                        android:inputType="number"
+                        android:padding="@dimen/paddingSmaller"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textColorHint="@color/gray"
+                        android:textSize="@dimen/textSmall"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/paddingSmallest"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/tenor"
+                        android:textColor="@color/darkGray" />
+
+                    <EditText
+                        android:id="@+id/tenor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@xml/layout_bg"
+                        android:gravity="right"
+                        android:hint="120 Bulan"
+                        android:inputType="number"
+                        android:padding="@dimen/paddingSmaller"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textColorHint="@color/gray"
+                        android:textSize="@dimen/textSmall"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray" />
+            </LinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+        <RelativeLayout
+            android:id="@+id/bt_ajukan"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_weight="1"
+            android:background="@xml/custem_bottom_green">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="AJUKAN"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
