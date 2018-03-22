@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="paddingSmallest">2dp</dimen>
+    <dimen name="paddingSmaller">8dp</dimen>
+    <dimen name="paddingSmall">10dp</dimen>
+    <dimen name="paddingMedium">14dp</dimen>
+    <dimen name="paddingLarge">18dp</dimen>
+    <dimen name="sizeSearch">34dp</dimen>
+    <dimen name="textSmall">12sp</dimen>
+    <dimen name="textMedium">16sp</dimen>
+    <dimen name="textlarge">20sp</dimen>
+    <dimen name="sizeImage">100dp</dimen>
+    <dimen name="sizeRecycler">350dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="sizeDot">30dp</dimen>
+    <dimen name="marginDot">20dp</dimen>
+    <dimen name="marginSmallest">4dp</dimen>
+    <dimen name="marginSmall">8dp</dimen>
+    <dimen name="marginMedium">12dp</dimen>
+    <dimen name="marginLarge">16dp</dimen>
+    <dimen name="marginLargest">20dp</dimen>
+    <dimen name="smallImage">50dp</dimen>
+    <dimen name="smallMap">200dp</dimen>
+    <dimen name="textlarger">22sp</dimen>
+</resources>

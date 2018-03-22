@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="com.rumahkpr.akses.aksesrumahkpr.activity.SearchActivity">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+
+        <!--<LinearLayout-->
+            <!--android:orientation="horizontal"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbarSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="?attr/actionBarSize"
+                app:navigationIcon="@drawable/ic_nav_back" >
+                <android.support.v7.widget.SearchView
+                    android:id="@+id/searchs"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:focusable="false"
+                    app:closeIcon="@drawable/ic_close"
+                    app:iconifiedByDefault="false"
+                    app:searchIcon="@drawable/ic_search" />
+            </android.support.v7.widget.Toolbar>
+
+
+        <!--</LinearLayout>-->
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/layoutScrol"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appBar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/layoutFilter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/textMedium"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Harga Min."
+                    android:textColor="@color/darkGray" />
+
+                <EditText
+                    android:id="@+id/edtHarMin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/marginSmall"
+                    android:background="@xml/layout_bg"
+                    android:hint="Rp. 10,000,000,-"
+                    android:padding="@dimen/paddingSmaller"
+                    android:textColorHint="@color/gray" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/marginSmall"
+                    android:text="Harga Max."
+                    android:textColor="@color/darkGray" />
+
+                <EditText
+                    android:id="@+id/edtHarMax"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/marginSmall"
+                    android:background="@xml/layout_bg"
+                    android:hint="Rp. 10,000,000,-"
+                    android:padding="@dimen/paddingSmaller"
+                    android:textColorHint="@color/gray" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/marginSmall"
+                    android:text="Jenis Properti"
+                    android:textColor="@color/darkGray" />
+
+                <Spinner
+                    android:id="@+id/spinnerJenisProperti"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/marginSmall"
+                    android:background="@xml/layout_bg" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/marginSmall">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:background="@xml/layout_bg"
+                        android:text="Filter"
+                        android:textColor="@color/darkGray" />
+
+                    <LinearLayout
+                        android:id="@+id/bt_advandFilter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="*"
+                            android:textColor="@color/red"
+                            android:textSize="@dimen/textMedium"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/marginMedium"
+                            android:text="Advande Filter"
+                            android:textColor="@color/darkGray"
+                            android:textSize="@dimen/textSmall"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginSmall">
+
+                <ImageView
+                    android:id="@+id/dropDownUp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/ic_dropdown_24" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_advandFilter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/accentGray"
+                android:orientation="vertical"
+                android:padding="@dimen/textMedium"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Propinsi"
+                    android:textColor="@color/darkGray" />
+
+                <Spinner
+                    android:id="@+id/spinPropinsi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/marginSmall"
+                    android:background="@xml/layout_bg" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/marginSmall"
+                    android:text="Kota/Kabupaten" />
+
+                <Spinner
+                    android:id="@+id/spinKabupaten"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/marginSmall"
+                    android:background="@xml/layout_bg" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/marginSmall"
+                    android:text="Pengembang" />
+
+                <Spinner
+                    android:id="@+id/spinPengembang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/marginSmall"
+                    android:background="@xml/layout_bg" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/textMedium"
+                    android:text="Kategoryi" />
+
+                <Spinner
+                    android:id="@+id/spinKategori"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/marginSmall"
+                    android:background="@xml/layout_bg" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/marginSmall"
+                    android:text="Kamar Tidur" />
+
+                <Spinner
+                    android:id="@+id/spinKamarTidur"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/marginSmall"
+                    android:background="@xml/layout_bg" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/marginSmall"
+                    android:text="Kamar Mandi" />
+
+                <Spinner
+                    android:id="@+id/spinKamarMandi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/marginSmall"
+                    android:background="@xml/layout_bg" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/marginSmall"
+                    android:text="Garasi" />
+
+                <Spinner
+                    android:id="@+id/spinGarasi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/marginSmall"
+                    android:background="@xml/layout_bg" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/marginSmall"
+                    android:text="L.Tanah Min (m2)" />
+
+                <EditText
+                    android:id="@+id/LtanahMin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/marginSmall"
+                    android:background="@xml/layout_bg"
+                    android:hint="0"
+                    android:padding="@dimen/paddingSmaller"
+                    android:textColorHint="@color/gray" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/marginSmall"
+                    android:text="L.Tanah Max (m2)" />
+
+                <EditText
+                    android:id="@+id/LtanahMax"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/marginSmall"
+                    android:background="@xml/layout_bg"
+                    android:hint="0"
+                    android:padding="@dimen/paddingSmaller"
+                    android:textColorHint="@color/gray" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/marginSmall"
+                    android:text="L.Bangunan Min (m2)" />
+
+                <EditText
+                    android:id="@+id/LbangunanMin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/marginSmall"
+                    android:background="@xml/layout_bg"
+                    android:hint="0"
+                    android:padding="@dimen/paddingSmaller"
+                    android:textColorHint="@color/gray" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/marginSmall"
+                    android:text="L.Bangunan Max (m2)" />
+
+                <EditText
+                    android:id="@+id/LbangunanMax"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/marginSmall"
+                    android:background="@xml/layout_bg"
+                    android:hint="0"
+                    android:padding="@dimen/paddingSmaller"
+                    android:textColorHint="@color/gray" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lay_advandFilter"
+                android:padding="@dimen/paddingSmall">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    android:visibility="gone" />
+            </RelativeLayout>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</RelativeLayout>

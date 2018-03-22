@@ -1,0 +1,57 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.rumahkpr.akses.aksesrumahkpr.fragment.HomeFragment">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/relSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/white"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/paddingLarge"
+            android:paddingLeft="@dimen/paddingLarge"
+            android:paddingRight="@dimen/paddingLarge"
+            android:paddingBottom="@dimen/paddingSmall"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.SearchView
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconifiedByDefault="false"
+                app:searchIcon="@drawable/ic_search"
+                app:closeIcon="@drawable/ic_close"
+                android:focusable="false"
+                android:background="@xml/layout_bg" />
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tabMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/paddingSmall"
+                app:tabBackground="@xml/layout_bg"
+                app:tabMode="scrollable"
+                app:tabPaddingEnd="5dp"
+                app:tabPaddingStart="5dp"
+                app:tabSelectedTextColor="@color/black"
+                app:tabTextColor="@color/gray"
+                app:tabIndicatorColor="@null" />
+        </LinearLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pagerMenu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/relButton"
+        android:layout_below="@+id/relSearch" />
+
+</RelativeLayout>

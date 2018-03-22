@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.SwipeRefreshLayout
+    android:id="@+id/swipList"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".fragment.ListFragment">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/paddingSmall"
+            android:paddingLeft="@dimen/paddingLarge"
+            android:paddingRight="@dimen/paddingLarge"
+            android:paddingTop="@dimen/paddingSmall">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/paddingSmall"
+                        android:text="@string/anda_cari"
+                        android:textColor="@color/darkGray"
+                        android:textSize="@dimen/textMedium"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/paddingSmall"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <com.rumahkpr.akses.aksesrumahkpr.util.RoundRectCornerImageView
+                                android:id="@+id/catRumah"
+                                android:layout_width="@dimen/sizeImage"
+                                android:layout_height="@dimen/sizeImage"
+                                android:layout_marginRight="@dimen/paddingSmall"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/feat4" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="@string/rumah"
+                                android:textColor="@color/darkGray"
+                                android:textSize="@dimen/textMedium"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <com.rumahkpr.akses.aksesrumahkpr.util.RoundRectCornerImageView
+                                android:id="@+id/catApartment"
+                                android:layout_width="@dimen/sizeImage"
+                                android:layout_height="@dimen/sizeImage"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/apartemt_img" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="@string/apartment"
+                                android:textColor="@color/darkGray"
+                                android:textSize="@dimen/textMedium"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/paddingSmallest"
+                app:cardBackgroundColor="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/paddingSmallest"
+                        android:text="Rumah di Jakarta"
+                        android:textColor="@color/darkGray"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/textMedium"/>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/reclerDaerah"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/paddingSmallest"
+                        android:nestedScrollingEnabled="false" />
+
+                    <Button
+                        android:id="@+id/moreDaerah"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/paddingSmallest"
+                        android:background="@xml/layout_bg"
+                        android:text="@string/see_more"
+                        android:textColor="@color/darkGray" />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/paddingSmallest"
+                app:cardBackgroundColor="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/paddingSmallest"
+                        android:text="Disekitar Anda"
+                        android:textColor="@color/darkGray"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/textMedium"/>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recler"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/paddingSmallest"
+                        android:nestedScrollingEnabled="false" />
+
+                    <Button
+                        android:id="@+id/moreSekitar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/paddingSmallest"
+                        android:background="@xml/layout_bg"
+                        android:text="@string/see_more"
+                        android:textColor="@color/darkGray" />
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</android.support.v4.widget.SwipeRefreshLayout>

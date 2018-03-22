@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.rumahkpr.akses.aksesrumahkpr">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application
+        android:name="android.support.multidex.MultiDexApplication"
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@drawable/bg_splash"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:roundIcon="@drawable/bg_splash"
+        android:supportsRtl="true"
+        android:theme="@style/Calak.Theme">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/API_KEY_MAP" />
+
+        <activity
+            android:name=".activity.SplashScreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.WelcomeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Calak.Theme"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.DetailProductActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Calak.Theme" />
+        <activity
+            android:name=".activity.SearchActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Calak.Theme" />
+        <activity android:name=".activity.SimulasiKPRActivity"
+            android:screenOrientation="portrait"></activity>
+    </application>
+
+</manifest>
