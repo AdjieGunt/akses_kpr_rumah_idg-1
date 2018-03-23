@@ -1,18 +1,26 @@
 package com.rumahkpr.akses.aksesrumahkpr.Data.Online;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.View;
-import android.widget.ProgressBar;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.rumahkpr.akses.aksesrumahkpr.Listener.SimulasiKPR;
+import com.rumahkpr.akses.aksesrumahkpr.R;
+import com.rumahkpr.akses.aksesrumahkpr.activity.AjukanKPRActivity;
 import com.rumahkpr.akses.aksesrumahkpr.activity.DetailProductActivity;
 import com.rumahkpr.akses.aksesrumahkpr.activity.SearchActivity;
 import com.rumahkpr.akses.aksesrumahkpr.activity.SimulasiKPRActivity;
@@ -36,28 +44,42 @@ import java.util.Map;
 public class API {
 
     public final String IP_ADDRESS = "https://btn-rest-api.firebaseio.com/";
-    ProgressBar progressBar;
+    ProgressDialog progressDialog = null;
 
-    public void getListHouse(final Activity activity, final String parameter, final Fragment fragment){
+    public void startLoading(final Context context) {
+        if (progressDialog == null) {
+            progressDialog = new ProgressDialog(context, R.style.TrasparantDialog);
+            progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            progressDialog.setCancelable(false);
+        }
+        progressDialog.show();
+    }
+
+    public void stopLoading() {
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.dismiss();
+        }
+    }
+
+    public void getListHouse(final Activity activity, final String parameter, final Fragment fragment) {
         Log.d("parameter", parameter);
-        startLoading(activity);
         final JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("keyword", parameter);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, IP_ADDRESS+"house-list.json", null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, IP_ADDRESS + "house-list.json", null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.d("response", String.valueOf(response));
                 try {
-                    JSONObject jsonObject1 = new JSONObject(String.valueOf(response)) ;
+                    JSONObject jsonObject1 = new JSONObject(String.valueOf(response));
                     String status = jsonObject1.getString("status");
-                    if(status.equals("success")){
+                    if (status.equals("success")) {
                         JSONArray jsonArray = jsonObject1.getJSONArray("payload");
                         ArrayList<Rumah> data = new ArrayList<>();
-                        for(int i=0; i<jsonArray.length(); i++){
+                        for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject json = jsonArray.getJSONObject(i);
                             Rumah rumah = new Rumah();
                             rumah.setAlamat(json.getString("alamat"));
@@ -71,19 +93,19 @@ public class API {
                             rumah.setImg4(json.getString("gbr4"));
                             rumah.setImg5(json.getString("gbr5"));
 
-                            if(json.getString("gbr1").equals("")){
+                            if (json.getString("gbr1").equals("")) {
                                 rumah.setImg1("null");
                             }
-                            if(json.getString("gbr2").equals("")){
+                            if (json.getString("gbr2").equals("")) {
                                 rumah.setImg2("null");
                             }
-                            if(json.getString("gbr3").equals("")){
+                            if (json.getString("gbr3").equals("")) {
                                 rumah.setImg3("null");
                             }
-                            if(json.getString("gbr4").equals("")){
+                            if (json.getString("gbr4").equals("")) {
                                 rumah.setImg4("null");
                             }
-                            if(json.getString("gbr5").equals("")){
+                            if (json.getString("gbr5").equals("")) {
                                 rumah.setImg5("null");
                             }
 
@@ -133,19 +155,19 @@ public class API {
                             rumah.setVideo(json.getString("video"));
                             data.add(rumah);
                         }
-                        if(parameter.equals("disekitar")){
-                            ((ListFragment)fragment).setRumahDisekitar(data);
-                        }else if(parameter.equals("daerah")){
-                            ((ListFragment)fragment).setRumahDaerah(data);
-                        }else if(parameter.equals("moreDetail")){
-                            ((DetailProductActivity)activity).setDataMoreTipe(data);
-                        }else if(parameter.equals("listHouseMap")){
-                            ((MapFragment)fragment).setDataRumah(data);
-                        }else if(parameter.equals("searchActivity")){
-                            ((SearchActivity)activity).setDataHouseList(data);
+                        if (parameter.equals("disekitar")) {
+                            ((ListFragment) fragment).setRumahDisekitar(data);
+                        } else if (parameter.equals("daerah")) {
+                            ((ListFragment) fragment).setRumahDaerah(data);
+                        } else if (parameter.equals("moreDetail")) {
+                            ((DetailProductActivity) activity).setDataMoreTipe(data);
+                        } else if (parameter.equals("listHouseMap")) {
+                            ((MapFragment) fragment).setDataRumah(data);
+                        } else if (parameter.equals("searchActivity")) {
+                            ((SearchActivity) activity).setDataHouseList(data);
                         }
 
-                    }else{
+                    } else {
                         Log.d("Error", "status faild");
                         new DialogManager().AlertOK(activity, "Gagal mengambil data", new DialogInterface.OnClickListener() {
                             @Override
@@ -154,16 +176,16 @@ public class API {
                             }
                         });
                     }
-                    stopLoading(activity);
+//                    stopLoading();
                 } catch (JSONException e) {
-                    stopLoading(activity);
+//                    stopLoading();
                     e.printStackTrace();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                stopLoading(activity);
+//                stopLoading();
                 Log.d("Error", error.getMessage().toString());
                 new DialogManager().AlertOK(activity, "Gagal mengambil data", new DialogInterface.OnClickListener() {
                     @Override
@@ -172,7 +194,7 @@ public class API {
                     }
                 });
             }
-        }){
+        }) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 return super.getHeaders();
@@ -181,30 +203,24 @@ public class API {
         Singletone.getmSingletone(activity).addToRequestqueue(jsonObjectRequest);
     }
 
-    public void simulasiKPR(final Activity activity, final String nilai_pinjam, final String bunga, final int bulan){
-        Log.d("parameter", nilai_pinjam+" , "+bunga+" , "+bulan);
+    public void allConfig(final Activity activity, JSONObject parameter, Fragment fragment, String url, final String layout) {
+        Log.d("parameter", parameter + " , " + url + " , " + layout);
         startLoading(activity);
-        final JSONObject jsonObject = new JSONObject();
-        try {
-            jsonObject.put("nilai_pinjam", nilai_pinjam);
-            jsonObject.put("interest", bunga);
-            jsonObject.put("jangka_waktu", bulan);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, IP_ADDRESS+"credit-simulation.json", null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, IP_ADDRESS + url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.d("response", String.valueOf(response));
                 try {
-                    JSONObject jsonObject1 = new JSONObject(String.valueOf(response)) ;
+                    JSONObject jsonObject1 = new JSONObject(String.valueOf(response));
                     String status = jsonObject1.getString("status");
-                    if(status.equals("success")){
+                    if (status.equals("success")) {
                         JSONObject json = jsonObject1.getJSONObject("payload");
-                        ((SimulasiKPRActivity)activity).hasilSimulasi(json.getString("angsuran_perbulan"));
-//                        ((SimulasiKPRActivity)activity).hasilSimulasiFragment(json.getString("angsuran_perbulan"));
-
-                    }else{
+                        if (layout.equals(SimulasiKPR.class.getName())) {
+                            ((SimulasiKPRActivity) activity).hasilSimulasi(json.getString("angsuran_perbulan"));
+                        } else if (layout.equals(AjukanKPRActivity.class.getName())) {
+//                            ((AjukanKPRActivity)activity).openAler();
+                        }
+                    } else {
                         Log.d("Error", "status faild");
                         new DialogManager().AlertOK(activity, "Coba lagi pengunjung sedang penuh.", new DialogInterface.OnClickListener() {
                             @Override
@@ -213,48 +229,52 @@ public class API {
                             }
                         });
                     }
-                    stopLoading(activity);
+                    stopLoading();
                 } catch (JSONException e) {
-                    stopLoading(activity);
+                    stopLoading();
                     e.printStackTrace();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                stopLoading(activity);
+                NetworkResponse errorCode = error.networkResponse;
+                if (errorCode != null && errorCode.data != null) {
+                    Log.d("ErrorCode =>", String.valueOf(errorCode.statusCode));
+                }
                 Log.d("Error", error.getMessage().toString());
-                new DialogManager().AlertOK(activity, "Gagal mengambil data", new DialogInterface.OnClickListener() {
+                new DialogManager().AlertOK(activity, "Koneksi mengalami gangguan, coba lagi.", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
                     }
                 });
+
+                stopLoading();
             }
-        }){
+        }) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 return super.getHeaders();
             }
         };
+        jsonObjectRequest.setRetryPolicy(new RetryPolicy() {
+            @Override
+            public int getCurrentTimeout() {
+                return 30000;
+            }
+
+            @Override
+            public int getCurrentRetryCount() {
+                return 1;
+            }
+
+            @Override
+            public void retry(VolleyError error) throws VolleyError {
+                Log.d("RTO Result=>", error.getMessage().toString());
+            }
+        });
         Singletone.getmSingletone(activity).addToRequestqueue(jsonObjectRequest);
     }
-
-    public void startLoading(Context context){
-        if(progressBar == null){
-            progressBar = new ProgressBar(context);
-            progressBar.setProgress(1);
-            progressBar.setMax(50);
-        }
-        progressBar.setVisibility(View.VISIBLE);
-    }
-
-    public void stopLoading(Context context){
-        if(progressBar != null && progressBar.isShown()){
-            progressBar.setVisibility(View.GONE);
-        }
-    }
-
-
 
 }

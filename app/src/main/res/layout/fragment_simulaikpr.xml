@@ -149,7 +149,8 @@
             android:textColorHint="@color/gray"
             android:textSize="@dimen/textSmall"
             android:inputType="number"
-            android:maxLength="2"/>
+            android:maxLength="2"
+            android:imeOptions="actionDone"/>
     </LinearLayout>
     <View
         android:layout_width="match_parent"
