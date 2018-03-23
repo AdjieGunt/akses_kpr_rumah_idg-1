@@ -218,7 +218,7 @@ public class API {
                         if (layout.equals(SimulasiKPR.class.getName())) {
                             ((SimulasiKPRActivity) activity).hasilSimulasi(json.getString("angsuran_perbulan"));
                         } else if (layout.equals(AjukanKPRActivity.class.getName())) {
-//                            ((AjukanKPRActivity)activity).openAler();
+                            ((AjukanKPRActivity)activity).openFinish();
                         }
                     } else {
                         Log.d("Error", "status faild");
@@ -238,6 +238,7 @@ public class API {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                Log.d("Error", error.getMessage());
                 NetworkResponse errorCode = error.networkResponse;
                 if (errorCode != null && errorCode.data != null) {
                     Log.d("ErrorCode =>", String.valueOf(errorCode.statusCode));

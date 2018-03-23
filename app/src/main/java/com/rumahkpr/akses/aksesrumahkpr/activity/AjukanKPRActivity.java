@@ -1,16 +1,15 @@
 package com.rumahkpr.akses.aksesrumahkpr.activity;
 
 import android.content.DialogInterface;
+import android.support.design.widget.BottomSheetDialog;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.text.InputType;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.rumahkpr.akses.aksesrumahkpr.Data.Online.API;
@@ -22,6 +21,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Calendar;
+
 
 public class AjukanKPRActivity extends AppCompatActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
 
@@ -93,12 +93,12 @@ public class AjukanKPRActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void openDate() {
-        Calendar calendar = Calendar.getInstance();
+        Calendar now = Calendar.getInstance();
         DatePickerDialog dpd = DatePickerDialog.newInstance(
-                this,
-                calendar.get(java.util.Calendar.YEAR),
-                calendar.get(java.util.Calendar.MONTH),
-                calendar.get(java.util.Calendar.DAY_OF_MONTH)
+                AjukanKPRActivity.this,
+                now.get(Calendar.YEAR),
+                now.get(Calendar.MONTH),
+                now.get(Calendar.DAY_OF_MONTH)
         );
         dpd.show(getFragmentManager(), "Datepickerdialog");
     }
@@ -138,7 +138,7 @@ public class AjukanKPRActivity extends AppCompatActivity implements View.OnClick
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        api.allConfig(this, jsonObject, new Fragment(), "credit-submission", "ajukanKPR");
+        api.allConfig(this, jsonObject, new Fragment(), "credit-submission.json", AjukanKPRActivity.class.getName());
     }
 
     public void openAler(String msg){
@@ -150,10 +150,24 @@ public class AjukanKPRActivity extends AppCompatActivity implements View.OnClick
         });
     }
 
-    @Override
-    public void onDateSet(DatePickerDialog view, int year, int mont, int day) {
-        tgl.setText(String.valueOf(day)+"-"+String.valueOf(mont)+"-"+String.valueOf(year));
+    public void openFinish(){
+        View view = getLayoutInflater().inflate(R.layout.layout_hasil_pengajuan, null);
+        final BottomSheetDialog dialog = new BottomSheetDialog(AjukanKPRActivity.this);
+        ImageView close = (ImageView)dialog.findViewById(R.id.close_hasilPengajuan);
+        dialog.setContentView(view);
+        dialog.setCancelable(false);
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
 
 
+    @Override
+    public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
+        tgl.setText(String.valueOf(dayOfMonth)+"-"+String.valueOf(monthOfYear)+"-"+String.valueOf(year));
+    }
 }
