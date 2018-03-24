@@ -132,4 +132,6 @@
     <string name="email">Email</string>
     <string name="pendapatan">Pendapatan perbulan</string>
     <string name="namaIbu">Nama Ibu Kandung</string>
+    <string name="hasil_pengajuan">HASIL PENGAJUAN</string>
+    <string name="API_KEY_APPS">gXzGTAV7uVvtYYvHbG7RbjEvZSInYgVs</string>
 </resources>

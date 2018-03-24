@@ -35,7 +35,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
+
 
 /**
  * Created by JEMMY CALAK on 3/18/2018.
@@ -43,7 +45,7 @@ import java.util.Map;
 
 public class API {
 
-    public final String IP_ADDRESS = "https://btn-rest-api.firebaseio.com/";
+    public final String IP_ADDRESS = "http://mortgtech-eval-prod.apigee.net/btn-mortgtech/";
     ProgressDialog progressDialog = null;
 
     public void startLoading(final Context context) {
@@ -61,26 +63,29 @@ public class API {
         }
     }
 
-    public void getListHouse(final Activity activity, final String parameter, final Fragment fragment) {
-        Log.d("parameter", parameter);
+    public void getListHouse(final Activity activity, final String parameter, final Fragment fragment, final String layout) {
+
         final JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("keyword", parameter);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, IP_ADDRESS + "house-list.json", null, new Response.Listener<JSONObject>() {
+        Log.d("parameter "+layout, String.valueOf(jsonObject));
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, IP_ADDRESS + "house-list", jsonObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.d("response", String.valueOf(response));
+                Log.d("response "+layout, String.valueOf(response));
                 try {
                     JSONObject jsonObject1 = new JSONObject(String.valueOf(response));
                     String status = jsonObject1.getString("status");
                     if (status.equals("success")) {
                         JSONArray jsonArray = jsonObject1.getJSONArray("payload");
                         ArrayList<Rumah> data = new ArrayList<>();
+                        int codition=0;
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject json = jsonArray.getJSONObject(i);
+
                             Rumah rumah = new Rumah();
                             rumah.setAlamat(json.getString("alamat"));
                             rumah.setBlok(json.getString("blok"));
@@ -108,8 +113,6 @@ public class API {
                             if (json.getString("gbr5").equals("")) {
                                 rumah.setImg5("null");
                             }
-
-                            Log.d("imga2", json.getString("gbr5"));
                             rumah.setHarga(json.getString("harga"));
                             rumah.setId_booking(json.getString("id_booking"));
                             rumah.setId_desa_keluraha(json.getString("id_desa_kelurahan"));
@@ -153,17 +156,31 @@ public class API {
                             rumah.setSubsidi_lama(json.getString("subsidi_lama"));
                             rumah.setTahun_bangun(json.getString("tahun_bangun"));
                             rumah.setVideo(json.getString("video"));
-                            data.add(rumah);
+
+                            Log.d("isExist", String.valueOf(isExist(data, rumah.getKlaster()))+" , "+rumah.getKlaster());
+                            String klaster = json.getString("klaster");
+                            if(codition == 0){
+                                Log.d("firts Add","<<==");
+                                data.add(rumah);
+                                codition = 1;
+                            }else{
+                                Log.d("second Add","<<==");
+                                if(isExist(data, klaster)){
+                                    Log.d("data added","<<==");
+                                    data.add(rumah);
+                                }
+                            }
                         }
-                        if (parameter.equals("disekitar")) {
+
+                        if (layout.equals("disekitar")) {
                             ((ListFragment) fragment).setRumahDisekitar(data);
-                        } else if (parameter.equals("daerah")) {
+                        } else if (layout.equals("daerah")) {
                             ((ListFragment) fragment).setRumahDaerah(data);
-                        } else if (parameter.equals("moreDetail")) {
+                        } else if (layout.equals("moreDetail")) {
                             ((DetailProductActivity) activity).setDataMoreTipe(data);
-                        } else if (parameter.equals("listHouseMap")) {
+                        } else if (layout.equals("listHouseMap")) {
                             ((MapFragment) fragment).setDataRumah(data);
-                        } else if (parameter.equals("searchActivity")) {
+                        } else if (layout.equals("searchActivity")) {
                             ((SearchActivity) activity).setDataHouseList(data);
                         }
 
@@ -186,7 +203,6 @@ public class API {
             @Override
             public void onErrorResponse(VolleyError error) {
 //                stopLoading();
-                Log.d("Error", error.getMessage().toString());
                 new DialogManager().AlertOK(activity, "Gagal mengambil data", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -197,10 +213,42 @@ public class API {
         }) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
-                return super.getHeaders();
+                HashMap hashMap = new HashMap();
+                hashMap.put("Apikey", activity.getResources().getString(R.string.API_KEY_APPS));
+                return hashMap;
             }
         };
+
+        jsonObjectRequest.setRetryPolicy(new RetryPolicy() {
+            @Override
+            public int getCurrentTimeout() {
+                return 50000;
+            }
+
+            @Override
+            public int getCurrentRetryCount() {
+                return 1;
+            }
+
+            @Override
+            public void retry(VolleyError error) throws VolleyError {
+                Log.d("RTO Result=>", error.getMessage().toString());
+            }
+        });
         Singletone.getmSingletone(activity).addToRequestqueue(jsonObjectRequest);
+    }
+
+    public Boolean isExist(ArrayList<Rumah> data, String name){
+        boolean result = false;
+        for(int i=0; i<data.size(); i++){
+            Log.d("kalster 1",data.get(i).getKlaster().toLowerCase()+" klaster 2"+name.toLowerCase());
+            if(data.get(i).getKlaster().toLowerCase().equals(name.toLowerCase())){
+                result =false;
+            }else{
+                result = true;
+            }
+        }
+        return result;
     }
 
     public void allConfig(final Activity activity, JSONObject parameter, Fragment fragment, String url, final String layout) {
@@ -256,7 +304,9 @@ public class API {
         }) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
-                return super.getHeaders();
+                HashMap hashMap = new HashMap();
+                hashMap.put("Apikey", activity.getResources().getString(R.string.API_KEY_APPS));
+                return hashMap;
             }
         };
         jsonObjectRequest.setRetryPolicy(new RetryPolicy() {

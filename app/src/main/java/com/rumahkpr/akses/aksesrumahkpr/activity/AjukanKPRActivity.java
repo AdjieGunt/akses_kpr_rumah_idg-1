@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -152,11 +153,11 @@ public class AjukanKPRActivity extends AppCompatActivity implements View.OnClick
 
     public void openFinish(){
         View view = getLayoutInflater().inflate(R.layout.layout_hasil_pengajuan, null);
-        final BottomSheetDialog dialog = new BottomSheetDialog(AjukanKPRActivity.this);
-        ImageView close = (ImageView)dialog.findViewById(R.id.close_hasilPengajuan);
+        final BottomSheetDialog dialog = new BottomSheetDialog(this);
         dialog.setContentView(view);
         dialog.setCancelable(false);
-        close.setOnClickListener(new View.OnClickListener() {
+        final ImageView bt_close = (ImageView)dialog.findViewById(R.id.close_pengajuan);
+        bt_close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dialog.dismiss();
