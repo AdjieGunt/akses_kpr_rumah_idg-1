@@ -2,6 +2,7 @@ package com.rumahkpr.akses.aksesrumahkpr.fragment;
 
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -34,8 +35,10 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.rumahkpr.akses.aksesrumahkpr.Data.Online.API;
 import com.rumahkpr.akses.aksesrumahkpr.Listener.BaseLocation;
 import com.rumahkpr.akses.aksesrumahkpr.R;
+import com.rumahkpr.akses.aksesrumahkpr.activity.SearchActivity;
 import com.rumahkpr.akses.aksesrumahkpr.adapter.RecyclerViewAdapter;
 import com.rumahkpr.akses.aksesrumahkpr.model.Rumah;
+import com.rumahkpr.akses.aksesrumahkpr.util.RoundRectCornerImageView;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -45,7 +48,7 @@ import java.util.Locale;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ListFragment extends Fragment implements BaseLocation {
+public class ListFragment extends Fragment implements BaseLocation, View.OnClickListener {
 
     private RecyclerView recyclerViewSekitar, recyclerViewDaerah;
     private Button moreSekitar, moreDaerah;
@@ -65,6 +68,8 @@ public class ListFragment extends Fragment implements BaseLocation {
     private static final int LOCATION_REQ = 101;
     private Double currentLatitude, currentLongitude;
     private NestedScrollView mainLayout;
+    private RoundRectCornerImageView catRumah;
+    private RoundRectCornerImageView catApartment;
 
     public ListFragment() {
         // Required empty public constructor
@@ -123,6 +128,11 @@ public class ListFragment extends Fragment implements BaseLocation {
         mainLayout = (NestedScrollView)view.findViewById(R.id.layoutListHouse);
         mainLayout.setVisibility(View.GONE);
 
+        catApartment = (RoundRectCornerImageView)view.findViewById(R.id.catApartment);
+        catRumah = (RoundRectCornerImageView)view.findViewById(R.id.catRumah);
+        catRumah.setOnClickListener(this);
+        catApartment.setOnClickListener(this);
+
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -169,5 +179,24 @@ public class ListFragment extends Fragment implements BaseLocation {
     public void baseLocation(String location) {
         baseLocation = location;
         Log.d("locationList", baseLocation);
+    }
+
+    @Override
+    public void onClick(View view) {
+        Intent intent;
+        switch (view.getId()){
+            case R.id.catRumah:
+                intent = new Intent(getActivity(), SearchActivity.class);
+                intent.putExtra("code", 1);
+                intent.putExtra("catRumah", "jakarta");
+                startActivity(intent);
+                break;
+            case R.id.catApartment:
+                intent = new Intent(getActivity(), SearchActivity.class);
+                intent.putExtra("code", 2);
+                intent.putExtra("catApartemen", "apartemen");
+                startActivity(intent);
+                break;
+        }
     }
 }
