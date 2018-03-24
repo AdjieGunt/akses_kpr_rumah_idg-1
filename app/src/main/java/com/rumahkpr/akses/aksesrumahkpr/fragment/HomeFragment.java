@@ -85,7 +85,7 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
             }
         });
 
-        int space = 30;
+        int space = 25;
         ViewGroup slide = (ViewGroup) tabLayout.getChildAt(0);
         for (int i = 0; i < slide.getChildCount() - 1; i++) {
             View view = slide.getChildAt(i);
