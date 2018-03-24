@@ -151,7 +151,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
     }
 
     public void getData(String location){
-        api.getListHouse(this, "searchActivity", new Fragment());
+        api.getListHouse(this, "jakarta", new Fragment(), "searchActivity");
     }
 
     public void setDataHouseList(ArrayList<Rumah> data){

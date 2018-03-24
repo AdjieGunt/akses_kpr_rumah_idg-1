@@ -49,6 +49,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(final MyHolder holder, final int position) {
         final Rumah mrumah = mdata.get(position);
+
         holder.nama.setText(mrumah.getKlaster());
         holder.location.setText(mrumah.getAlamat());
         holder.developer.setText("PT. Developer Group");

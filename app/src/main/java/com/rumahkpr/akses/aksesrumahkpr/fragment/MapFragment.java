@@ -2,6 +2,8 @@ package com.rumahkpr.akses.aksesrumahkpr.fragment;
 
 
 import android.Manifest;
+import android.app.Activity;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -36,6 +38,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.rumahkpr.akses.aksesrumahkpr.Data.Online.API;
+import com.rumahkpr.akses.aksesrumahkpr.Listener.BaseLocation;
 import com.rumahkpr.akses.aksesrumahkpr.R;
 import com.rumahkpr.akses.aksesrumahkpr.adapter.RecyclerViewAdapter;
 import com.rumahkpr.akses.aksesrumahkpr.model.Rumah;
@@ -66,7 +69,12 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleA
     private API api;
     private String mLocation, latitude = null, longitude = null;
     private Double currentLatitude, currentLongitude;
+    private String baseLocation;
+    private String[]kota={
+            "jakarta","depok","bandung", "tangerang","surabaya"
+    };
 
+    BaseLocation baseLocationLis;
     public MapFragment() {
         // Required empty public constructor
     }
@@ -89,11 +97,17 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleA
 
         initMap();
         initRecycler(view);
-        getDataRumahMap();
+
     }
 
     private void getDataRumahMap() {
-        api.getListHouse(getActivity(), "listHouseMap", MapFragment.this);
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                api.getListHouse(getActivity(), baseLocation, MapFragment.this,"listHouseMap");
+            }
+        });
+        thread.start();
     }
 
     public void setDataRumah(ArrayList<Rumah> mdata) {
@@ -194,9 +208,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleA
             marker.remove();
         }
 
-//        if (googleApiClient != null) {
-//            LocationServices.FusedLocationApi.removeLocationUpdates(googleApiClient, this);
-//        }
+        if (googleApiClient != null) {
+            LocationServices.FusedLocationApi.removeLocationUpdates(googleApiClient, this);
+        }
         getDetailLocation(location);
     }
 
@@ -208,8 +222,18 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleA
 
         try {
             addresses = geocoder.getFromLocation(currentLatitude, currentLongitude, 1);
-            Log.d("Current Location1", "==>>" + addresses.get(0).getCountryName() + " , " + addresses.get(0).getLocality() + " , " + addresses.get(0).getAdminArea() + " , " + addresses.get(0).getAddressLine(0));
             setMylocations(location);
+
+            Log.d("Current Location2", "==>>"  + addresses.get(0).getLocality() + "-- " + addresses.get(0).getAdminArea() +"--"+ addresses.get(0).getSubLocality());
+            for(int i=0; i<kota.length; i++){
+                if(addresses.get(0).getAdminArea().toLowerCase().contains(kota[i])){
+                    baseLocation = kota[i];
+                }
+            }
+
+            Log.d("baseLocation", baseLocation);
+            baseLocationLis.baseLocation(baseLocation);
+            getDataRumahMap();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -218,7 +242,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleA
         if (!latitude.equals("0.0") && !longitude.equals("0.0")) {
             try {
                 addresses = geocoder.getFromLocation(currentLatitude, currentLongitude, 1);
-                Log.d("Current Location2", "==>>" + addresses.get(0).getCountryName() + " , " + addresses.get(0).getLocality() + " , " + addresses.get(0).getAdminArea());
+                Log.d("Current Location2", "==>>"  + addresses.get(0).getLocality() + "++ " + addresses.get(0).getAdminArea() +"++"+ addresses.get(0).getSubLocality());
+                setMylocations(location);
             } catch (Exception e) {
 
             }
@@ -311,4 +336,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleA
         initGoogleMaps();
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if(context instanceof BaseLocation){
+            baseLocationLis = (BaseLocation) context;
+        }
+    }
 }

@@ -67,7 +67,8 @@
                         android:textColorHint="@color/gray"
                         android:textSize="@dimen/textSmall"
                         android:textStyle="bold"
-                        android:imeOptions="actionNext"/>
+                        android:imeOptions="actionNext"
+                        android:focusable="true"/>
                 </LinearLayout>
 
                 <View
@@ -101,7 +102,8 @@
                         android:textColorHint="@color/gray"
                         android:textSize="@dimen/textSmall"
                         android:textStyle="bold"
-                        android:imeOptions="actionNext" />
+                        android:imeOptions="actionNext"
+                        android:inputType="text"/>
                 </LinearLayout>
 
                 <View

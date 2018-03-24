@@ -73,7 +73,7 @@ public class DetailProductActivity extends AppCompatActivity implements View.OnC
     }
 
     private void getDataMoreTipe() {
-        api.getListHouse(this, "moreDetail", new Fragment());
+        api.getListHouse(this, "jakarta", new Fragment(), "moreDetail");
     }
 
     private void getDataIntent() {
