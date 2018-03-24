@@ -32,6 +32,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
                     android:background="@drawable/ic_heart_24"/>
 
                 <TextView
@@ -40,7 +42,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/imageHome"
                     android:textStyle="bold"
-                    android:textSize="12sp"
+                    android:textSize="13sp"
                     android:textColor="@color/darkGray"
                     android:layout_marginLeft="@dimen/marginSmallest"/>
 
@@ -51,6 +53,7 @@
                     android:textSize="10sp"
                     android:layout_below="@+id/nama"
                     android:textColor="@color/darkGray"
+                    android:layout_marginBottom="3dp"
                     android:layout_marginLeft="@dimen/marginSmallest"/>
 
                 <TextView
@@ -60,6 +63,7 @@
                     android:layout_below="@+id/location"
                     android:textSize="10sp"
                     android:textColor="@color/darkGray"
+                    android:layout_marginBottom="10dp"
                     android:layout_marginLeft="@dimen/marginSmallest"/>
             </RelativeLayout>
         </RelativeLayout>
