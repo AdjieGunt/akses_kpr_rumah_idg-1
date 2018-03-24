@@ -73,10 +73,10 @@ public class ViewPagerAdapter extends FragmentPagerAdapter{
             case 0:
                 switch (position){
                     case 0:
-                        title ="LIST";
+                        title ="List";
                         break;
                     case 1:
-                        title ="MAP";
+                        title ="Map";
                         break;
                 }
                 break;
