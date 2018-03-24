@@ -44,6 +44,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
     private ImageView dropDownUp;
     private Handler handler;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -151,7 +152,8 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
     }
 
     public void getData(String location){
-        api.getListHouse(this, "jakarta", new Fragment(), "searchActivity");
+        api.startLoading(this);
+        api.getListHouse(this, location, new Fragment(), "searchActivity");
     }
 
     public void setDataHouseList(ArrayList<Rumah> data){
@@ -160,6 +162,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
         recyclerSearch.setAdapter(adapter);
         recyclerSearch.setVisibility(View.VISIBLE);
         dropDownUp.setVisibility(View.VISIBLE);
+        api.stopLoading();
     }
 
     @Override

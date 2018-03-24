@@ -54,9 +54,11 @@
         <activity
             android:name=".activity.SimulasiKPRActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.AjukanKPRActivity"
+        <activity
+            android:name=".activity.AjukanKPRActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".activity.CategoryActivity"></activity>
     </application>
 
 </manifest>

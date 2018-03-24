@@ -65,24 +65,27 @@ public class API {
 
     public void getListHouse(final Activity activity, final String parameter, final Fragment fragment, final String layout) {
 
+        if(!layout.equals("moreDetail")){
+            startLoading(activity);
+        }
         final JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("keyword", parameter);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        Log.d("parameter "+layout, String.valueOf(jsonObject));
+        Log.d("parameter " + layout, String.valueOf(jsonObject));
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, IP_ADDRESS + "house-list", jsonObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.d("response "+layout, String.valueOf(response));
+                Log.d("response " + layout, String.valueOf(response));
                 try {
                     JSONObject jsonObject1 = new JSONObject(String.valueOf(response));
                     String status = jsonObject1.getString("status");
                     if (status.equals("success")) {
                         JSONArray jsonArray = jsonObject1.getJSONArray("payload");
                         ArrayList<Rumah> data = new ArrayList<>();
-                        int codition=0;
+                        int codition = 0;
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject json = jsonArray.getJSONObject(i);
 
@@ -157,17 +160,20 @@ public class API {
                             rumah.setTahun_bangun(json.getString("tahun_bangun"));
                             rumah.setVideo(json.getString("video"));
 
-                            Log.d("isExist", String.valueOf(isExist(data, rumah.getKlaster()))+" , "+rumah.getKlaster());
-                            String klaster = json.getString("klaster");
-                            if(codition == 0){
-                                Log.d("firts Add","<<==");
+                            if (layout.equals("searchActivity")) {
                                 data.add(rumah);
-                                codition = 1;
-                            }else{
-                                Log.d("second Add","<<==");
-                                if(isExist(data, klaster)){
-                                    Log.d("data added","<<==");
+                            } else {
+                                String klaster = json.getString("klaster");
+                                if (codition == 0) {
+                                    Log.d("firts Add", "<<==");
                                     data.add(rumah);
+                                    codition = 1;
+                                } else {
+                                    Log.d("second Add", "<<==");
+                                    if (isExist(data, klaster)) {
+                                        Log.d("data added", "<<==");
+                                        data.add(rumah);
+                                    }
                                 }
                             }
                         }
@@ -186,29 +192,46 @@ public class API {
 
                     } else {
                         Log.d("Error", "status faild");
-                        new DialogManager().AlertOK(activity, "Gagal mengambil data", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
+                        if(layout.equals("searchActivity")){
+                            new DialogManager().AlertOK(activity, "Data yang anda cari tidak ada.", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
 
-                            }
-                        });
+                                }
+                            });
+                        }else {
+                            new DialogManager().AlertOK(activity, "Gagal mengambil data", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                }
+                            });
+                        }
                     }
-//                    stopLoading();
+                    stopLoading();
                 } catch (JSONException e) {
-//                    stopLoading();
                     e.printStackTrace();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-//                stopLoading();
-                new DialogManager().AlertOK(activity, "Gagal mengambil data", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
+                stopLoading();
+                if(layout.equals("searchActivity")){
+                    new DialogManager().AlertOK(activity, "Data yang anda cari tidak ada.", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
 
-                    }
-                });
+                        }
+                    });
+                }else {
+                    new DialogManager().AlertOK(activity, "Gagal mengambil data", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                        }
+                    });
+                }
             }
         }) {
             @Override
@@ -238,13 +261,13 @@ public class API {
         Singletone.getmSingletone(activity).addToRequestqueue(jsonObjectRequest);
     }
 
-    public Boolean isExist(ArrayList<Rumah> data, String name){
+    public Boolean isExist(ArrayList<Rumah> data, String name) {
         boolean result = false;
-        for(int i=0; i<data.size(); i++){
-            Log.d("kalster 1",data.get(i).getKlaster().toLowerCase()+" klaster 2"+name.toLowerCase());
-            if(data.get(i).getKlaster().toLowerCase().equals(name.toLowerCase())){
-                result =false;
-            }else{
+        for (int i = 0; i < data.size(); i++) {
+            Log.d("kalster 1", data.get(i).getKlaster().toLowerCase() + " klaster 2" + name.toLowerCase());
+            if (data.get(i).getKlaster().toLowerCase().equals(name.toLowerCase())) {
+                result = false;
+            } else {
                 result = true;
             }
         }
@@ -266,7 +289,7 @@ public class API {
                         if (layout.equals(SimulasiKPR.class.getName())) {
                             ((SimulasiKPRActivity) activity).hasilSimulasi(json.getString("angsuran_perbulan"));
                         } else if (layout.equals(AjukanKPRActivity.class.getName())) {
-                            ((AjukanKPRActivity)activity).openFinish();
+                            ((AjukanKPRActivity) activity).openFinish();
                         }
                     } else {
                         Log.d("Error", "status faild");
