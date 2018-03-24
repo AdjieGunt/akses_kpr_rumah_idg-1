@@ -70,7 +70,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.lov.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                holder.lov.setImageResource(R.drawable.ic_love_24);
+                holder.lov.setImageResource(R.drawable.ic_wishlist);
             }
         });
     }
