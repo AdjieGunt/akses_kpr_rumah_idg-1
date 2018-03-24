@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:navigationIcon="@drawable/ic_close"
-            app:title="SIMULASI KPR"
+            app:title="Simulasi KPR"
             app:titleTextColor="@color/darkGray"></android.support.v7.widget.Toolbar>
 
         <android.support.design.widget.TabLayout
@@ -60,6 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="@string/hitung"
+            android:textSize="@dimen/textMedium"
             android:textColor="@color/white"
             android:textStyle="bold" />
     </RelativeLayout>

@@ -53,7 +53,7 @@ public class AjukanKPRActivity extends AppCompatActivity implements View.OnClick
         pendapatan = (EditText)findViewById(R.id.pendapatan);
         email = (EditText)findViewById(R.id.email);
         noHp = (EditText)findViewById(R.id.notelpAjukan);
-        noCif = (EditText)findViewById(R.id.no_cif);
+//        noCif = (EditText)findViewById(R.id.no_cif);
         platond_kredit = (EditText)findViewById(R.id.platonKredit);
         tenor = (EditText)findViewById(R.id.tenor);
         bt_ajukan = (RelativeLayout)findViewById(R.id.bt_ajukan);
