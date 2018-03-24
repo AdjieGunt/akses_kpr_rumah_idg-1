@@ -9,7 +9,7 @@
     <dimen name="textSmall">12sp</dimen>
     <dimen name="textMedium">16sp</dimen>
     <dimen name="textlarge">20sp</dimen>
-    <dimen name="sizeImage">100dp</dimen>
+    <dimen name="sizeImage">75dp</dimen>
     <dimen name="sizeRecycler">350dp</dimen>
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
@@ -24,4 +24,5 @@
     <dimen name="smallImage">50dp</dimen>
     <dimen name="smallMap">200dp</dimen>
     <dimen name="textlarger">22sp</dimen>
+    <dimen name="cardMarginBottom">15dp</dimen>
 </resources>
