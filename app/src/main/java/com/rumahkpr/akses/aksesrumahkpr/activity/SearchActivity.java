@@ -2,6 +2,7 @@ package com.rumahkpr.akses.aksesrumahkpr.activity;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
@@ -43,6 +44,8 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
     private Animation animShow, animHide;
     private ImageView dropDownUp;
     private Handler handler;
+    private String dataSearch="", cat="";
+    private int codeData=0;
 
 
     @Override
@@ -53,6 +56,24 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
         initXml();
         initSearch();
         initSpinner();
+        getDataIntent();
+    }
+
+    private void getDataIntent() {
+        Intent intent = getIntent();
+        codeData = intent.getIntExtra("code", 0);
+        switch (codeData){
+            case 1:
+                dataSearch = intent.getStringExtra("cartRumah");
+                cat="_rumah";
+                api.startLoading(this);
+                api.getListHouse(this, "jakarta", new Fragment(), "searchActivity"+cat);
+                break;
+            case 2:
+                dataSearch = intent.getStringExtra("catApartemen");
+                getData(dataSearch);
+                break;
+        }
     }
 
     private void initSpinner() {
