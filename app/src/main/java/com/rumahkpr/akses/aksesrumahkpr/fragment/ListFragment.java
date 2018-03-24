@@ -13,6 +13,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
@@ -63,6 +64,7 @@ public class ListFragment extends Fragment implements BaseLocation {
     private LocationRequest locationRequest;
     private static final int LOCATION_REQ = 101;
     private Double currentLatitude, currentLongitude;
+    private NestedScrollView mainLayout;
 
     public ListFragment() {
         // Required empty public constructor
@@ -81,7 +83,7 @@ public class ListFragment extends Fragment implements BaseLocation {
     }
 
     private void getDataHouseList() {
-        swipeRefreshLayout.setRefreshing(true);
+        api.startLoading(getActivity());
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -101,7 +103,8 @@ public class ListFragment extends Fragment implements BaseLocation {
         this.dData = data;
         adapter1 = new RecyclerViewAdapter(getActivity(), getActivity(), data, 0);
         recyclerViewDaerah.setAdapter(adapter1);
-        swipeRefreshLayout.setRefreshing(false);
+        api.stopLoading();
+        mainLayout.setVisibility(View.VISIBLE);
     }
 
     private void initXml(View view) {
@@ -117,10 +120,13 @@ public class ListFragment extends Fragment implements BaseLocation {
         recyclerViewDaerah.setNestedScrollingEnabled(false);
         moreSekitar = (Button) view.findViewById(R.id.moreSekitar);
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipList);
+        mainLayout = (NestedScrollView)view.findViewById(R.id.layoutListHouse);
+        mainLayout.setVisibility(View.GONE);
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                swipeRefreshLayout.setRefreshing(false);
                 dData.clear();
                 sData.clear();
                 getDataHouseList();
