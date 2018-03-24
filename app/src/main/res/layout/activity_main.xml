@@ -32,10 +32,11 @@
                 android:id="@+id/navBottom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="?android:attr/windowBackground"
+                android:background="@color/black"
                 app:itemBackground="@color/white"
                 app:itemIconTint="@xml/selector_navigation_bottom"
                 app:itemTextColor="@xml/selector_navigation_bottom"
+                android:elevation="10dp"
                 app:menu="@menu/navigation_menu" />
         </RelativeLayout>
     </RelativeLayout>

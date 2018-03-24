@@ -140,6 +140,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Harga Terendah"
+                            android:textSize="@dimen/textMedium"
                             android:textColor="@color/darkGray" />
 
                         <TextView
@@ -148,6 +149,7 @@
                             android:layout_height="wrap_content"
                             android:text="Rp. 300 Juta"
                             android:textColor="@color/darkGray"
+                            android:textSize="@dimen/textMedium"
                             android:textStyle="bold" />
                     </LinearLayout>
 
@@ -161,6 +163,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Lantai"
+                            android:textSize="@dimen/textMedium"
                             android:textColor="@color/darkGray" />
 
                         <TextView
@@ -168,6 +171,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="1 Lantai"
+                            android:textSize="@dimen/textMedium"
                             android:textColor="@color/darkGray"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -191,6 +195,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Status Bersubsidi"
+                            android:textSize="@dimen/textMedium"
                             android:textColor="@color/darkGray" />
 
                         <TextView
@@ -198,6 +203,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Non Subsidi"
+                            android:textSize="@dimen/textMedium"
                             android:textColor="@color/darkGray"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -212,12 +218,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Unit"
+                            android:textSize="@dimen/textMedium"
                             android:textColor="@color/darkGray" />
 
                         <TextView
                             android:id="@+id/jumlah_unit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textSize="@dimen/textMedium"
                             android:text="2 Unit"
                             android:textColor="@color/darkGray"
                             android:textStyle="bold" />
@@ -242,6 +250,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Alamat"
+                            android:textSize="@dimen/textMedium"
                             android:textColor="@color/darkGray" />
 
                         <TextView
@@ -249,6 +258,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Jl. Jalan ke Surabaya"
+                            android:textSize="@dimen/textMedium"
                             android:textColor="@color/darkGray"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -262,6 +272,7 @@
                         <TextView
                             android:id="@+id/notelpTxt"
                             android:layout_width="wrap_content"
+                            android:textSize="@dimen/textMedium"
                             android:layout_height="wrap_content"
                             android:text="No. Telp"
                             android:textColor="@color/darkGray" />
@@ -270,6 +281,7 @@
                             android:id="@+id/notelp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textSize="@dimen/textMedium"
                             android:text="021-123654"
                             android:textColor="@color/darkGray"
                             android:textStyle="bold" />
@@ -292,6 +304,7 @@
                         <TextView
                             android:id="@+id/fasilitasTxt"
                             android:layout_width="wrap_content"
+                            android:textSize="@dimen/textMedium"
                             android:layout_height="wrap_content"
                             android:text="Fasilitas"
                             android:textColor="@color/darkGray" />
@@ -301,6 +314,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Rumah Sakit, Sekolah"
+                            android:textSize="@dimen/textMedium"
                             android:textColor="@color/darkGray"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -314,11 +328,13 @@
                             android:id="@+id/sertifikatTxt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textSize="@dimen/textMedium"
                             android:text="Sertifikat"
                             android:textColor="@color/darkGray" />
 
                         <TextView
                             android:id="@+id/sertifikat"
+                            android:textSize="@dimen/textMedium"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="SHGB"
@@ -344,12 +360,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Luas Bangunan"
+                            android:textSize="@dimen/textMedium"
                             android:textColor="@color/darkGray" />
 
                         <TextView
                             android:id="@+id/luas_bangunan"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textSize="@dimen/textMedium"
                             android:text="22 M"
                             android:textColor="@color/darkGray"
                             android:textStyle="bold" />
@@ -365,6 +383,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Luas Tanah"
+                            android:textSize="@dimen/textMedium"
                             android:textColor="@color/darkGray" />
 
                         <TextView
@@ -372,6 +391,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="22 M"
+                            android:textSize="@dimen/textMedium"
                             android:textColor="@color/darkGray"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -394,6 +414,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Daya Listrik"
+                            android:textSize="@dimen/textMedium"
                             android:textColor="@color/darkGray" />
 
                         <TextView
@@ -401,6 +422,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="1.300 KWh"
+                            android:textSize="@dimen/textMedium"
                             android:textColor="@color/darkGray"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -415,6 +437,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Klaster"
+                            android:textSize="@dimen/textMedium"
                             android:textColor="@color/darkGray" />
 
                         <TextView
@@ -422,6 +445,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Tampak Siring"
+                            android:textSize="@dimen/textMedium"
                             android:textColor="@color/darkGray"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -443,6 +467,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Tahun Bangun"
+                            android:textSize="@dimen/textMedium"
                             android:textColor="@color/darkGray" />
 
                         <TextView
@@ -450,6 +475,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="2015"
+                            android:textSize="@dimen/textMedium"
                             android:textColor="@color/darkGray"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -467,7 +493,10 @@
                         android:layout_height="wrap_content"
                         android:text="Lokasi"
                         android:textColor="@color/darkGray"
-                        android:textSize="@dimen/textMedium" />
+                        android:textSize="@dimen/textlarge"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="@dimen/cardMarginBottom"
+                        />
 
                     <fragment
                         android:id="@+id/detailMap"
@@ -484,7 +513,9 @@
                     <TextView
                         android:text="@string/tipe_rumah"
                         android:textColor="@color/darkGray"
-                        android:textSize="@dimen/textMedium"
+                        android:textSize="@dimen/textlarge"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="@dimen/cardMarginBottom"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <android.support.v7.widget.RecyclerView
@@ -511,6 +542,7 @@
             android:text="@string/simulasi_cicilan"
             android:textColor="@color/colorPrimaryDark"
             android:textStyle="bold"
+            android:textAllCaps="false"
             app:layout_widthPercent="30%" />
 
         <Button
@@ -520,6 +552,7 @@
             android:layout_toRightOf="@+id/simulasicicilan"
             android:background="@color/colorPrimaryDark"
             android:text="@string/ajukan_kpr"
+            android:textAllCaps="false"
             android:textColor="@color/gray"
             app:layout_widthPercent="70%"
             android:textStyle="bold"/>

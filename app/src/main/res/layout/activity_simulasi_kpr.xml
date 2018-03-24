@@ -32,6 +32,7 @@
             app:tabMode="fixed"
             app:tabSelectedTextColor="@color/black"
             app:tabTextColor="@color/gray" />
+
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.view.ViewPager
@@ -44,10 +45,14 @@
 
     <RelativeLayout
         android:id="@+id/hitung"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="100dp"
+        android:layout_marginRight="20dp"
         android:layout_weight="1"
+        android:backgroundTint="@color/colorPrimaryDark"
         android:background="@xml/custem_bottom_green">
 
         <TextView

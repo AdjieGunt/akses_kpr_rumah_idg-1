@@ -10,12 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="2"
+        android:layout_marginBottom="10dp"
         android:padding="@dimen/paddingSmallest">
         <TextView
             android:text="@string/nama"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textSize="@dimen/textMedium"
             android:textColor="@color/darkGray"/>
         <EditText
             android:id="@+id/namaSimulasi"
@@ -26,10 +28,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimaryDark"
-            android:background="@xml/layout_bg"
             android:enabled="false"
             android:padding="@dimen/paddingSmaller"
-            android:textSize="@dimen/textSmall"/>
+            android:background="@null"
+            android:textSize="@dimen/textMedium"/>
     </LinearLayout>
     <View
         android:layout_width="match_parent"
@@ -39,12 +41,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="2"
+        android:layout_marginBottom="10dp"
         android:padding="@dimen/paddingSmallest">
         <TextView
             android:text="@string/harga_beli"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textSize="@dimen/textMedium"
             android:textColor="@color/darkGray"/>
         <EditText
             android:id="@+id/hargaSimulai"
@@ -55,10 +59,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimaryDark"
-            android:background="@xml/layout_bg"
             android:enabled="false"
+            android:background="@null"
             android:padding="@dimen/paddingSmaller"
-            android:textSize="@dimen/textSmall"/>
+            android:textSize="@dimen/textMedium"/>
     </LinearLayout>
     <View
         android:layout_width="match_parent"
@@ -68,12 +72,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="2"
+        android:layout_marginBottom="10dp"
         android:padding="@dimen/paddingSmallest">
         <TextView
             android:text="@string/uang_muka"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textSize="@dimen/textMedium"
             android:textColor="@color/darkGray"/>
         <EditText
             android:id="@+id/uangMuka"
@@ -81,13 +87,13 @@
             android:textStyle="bold"
             android:layout_weight="1"
             android:gravity="right"
+            android:background="@null"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimaryDark"
-            android:background="@xml/layout_bg"
             android:padding="@dimen/paddingSmaller"
             android:textColorHint="@color/gray"
-            android:textSize="@dimen/textSmall"
+            android:textSize="@dimen/textMedium"
             android:inputType="number"/>
     </LinearLayout>
     <View
@@ -98,12 +104,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="2"
+        android:layout_marginBottom="10dp"
         android:padding="@dimen/paddingSmallest">
         <TextView
             android:text="@string/suku_bunga"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textSize="@dimen/textMedium"
             android:textColor="@color/darkGray"/>
         <EditText
             android:id="@+id/sukuBungaPtahun"
@@ -111,13 +119,13 @@
             android:textStyle="bold"
             android:layout_weight="1"
             android:gravity="right"
+            android:background="@null"
+            android:textSize="@dimen/textMedium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimaryDark"
-            android:background="@xml/layout_bg"
             android:padding="@dimen/paddingSmaller"
             android:textColorHint="@color/gray"
-            android:textSize="@dimen/textSmall"
             android:inputType="number"/>
     </LinearLayout>
     <View
@@ -128,12 +136,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="2"
+        android:layout_marginBottom="10dp"
         android:padding="@dimen/paddingSmallest">
         <TextView
             android:text="@string/lama_pinjaman"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textSize="@dimen/textMedium"
             android:textColor="@color/darkGray"/>
         <EditText
             android:id="@+id/lamaPinjaman"
@@ -141,13 +151,13 @@
             android:textStyle="bold"
             android:layout_weight="1"
             android:gravity="right"
+            android:background="@null"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimaryDark"
-            android:background="@xml/layout_bg"
             android:padding="@dimen/paddingSmaller"
             android:textColorHint="@color/gray"
-            android:textSize="@dimen/textSmall"
+            android:textSize="@dimen/textMedium"
             android:inputType="number"
             android:maxLength="2"
             android:imeOptions="actionDone"/>
@@ -160,12 +170,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="2"
+        android:layout_marginBottom="10dp"
         android:padding="@dimen/paddingSmallest">
         <TextView
             android:text="Angsuran Perbulan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textSize="@dimen/textMedium"
             android:textColor="@color/darkGray"/>
         <EditText
             android:id="@+id/masaKredit"
@@ -176,11 +188,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimaryDark"
-            android:background="@xml/layout_bg"
             android:padding="@dimen/paddingSmaller"
+            android:background="@null"
             android:textColorHint="@color/gray"
             android:enabled="false"
-            android:textSize="@dimen/textSmall"/>
+            android:textSize="@dimen/textMedium"/>
     </LinearLayout>
     <View
         android:layout_width="match_parent"

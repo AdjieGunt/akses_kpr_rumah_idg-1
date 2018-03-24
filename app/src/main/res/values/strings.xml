@@ -106,16 +106,16 @@
     </string>
     <string name="action_settings">Settings</string>
     <string name="next">Next</string>
-    <string name="skip">Skipp</string>
+    <string name="skip">Skip</string>
     <string name="title_welcome_1">Rumah impian mu ada disini..</string>
-    <string name="start">GOT IT</string>
+    <string name="start">Mulai</string>
     <string name="exit">Apakah kamu ingin keluar dari aplikasi ?</string>
     <string name="simulasi_cicilan">Simulasi Cicilan</string>
     <string name="ajukan_kpr">Ajukan KPR</string>
     <string name="tipe_rumah">Tipe Rumah</string>
-    <string name="kembali">KEMBALI</string>
+    <string name="kembali">Kembali</string>
     <string name="see_more">Lihat Semua +300</string>
-    <string name="hitung">HITUNG</string>
+    <string name="hitung">Hitung</string>
     <string name="_120_bulan">120 Bulan</string>
     <string name="lama_pinjaman">Lama Pinjaman</string>
     <string name="suku_bunga">Suku Bunga Pertahun</string>

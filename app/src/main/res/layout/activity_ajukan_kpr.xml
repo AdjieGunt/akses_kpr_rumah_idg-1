@@ -44,6 +44,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/paddingSmallest"
+                    android:layout_marginBottom="8dp"
                     android:weightSum="2">
 
                     <TextView
@@ -58,7 +59,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@xml/layout_bg"
+                        android:background="@null"
                         android:gravity="right"
                         android:hint="46961354483446"
                         android:inputType="number"
@@ -398,17 +399,19 @@
         <RelativeLayout
             android:id="@+id/bt_ajukan"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="45dp"
             android:layout_alignParentBottom="true"
             android:layout_weight="1"
+            android:backgroundTint="@color/colorPrimaryDark"
             android:background="@xml/custem_bottom_green">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="AJUKAN"
+                android:text="Ajukan Sekarang"
                 android:textColor="@color/white"
+
                 android:textStyle="bold" />
         </RelativeLayout>
 
