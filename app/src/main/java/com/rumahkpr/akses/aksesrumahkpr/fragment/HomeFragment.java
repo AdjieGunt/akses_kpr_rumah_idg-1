@@ -61,7 +61,7 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
     private void initSearchView() {
         SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
-        searchView.setQueryHint("Cari Rumah, contoh 'Rumah di depok'");
+        searchView.setQueryHint("Cari 'Rumah di depok'");
         searchAutoComplete = (SearchView.SearchAutoComplete) searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
         searchAutoComplete.setBackgroundColor(Color.WHITE);
         searchAutoComplete.setHintTextColor(getResources().getColor(R.color.darkGray));
